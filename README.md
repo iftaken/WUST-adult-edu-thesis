@@ -1,205 +1,176 @@
-# 心河Paper学位论文 LaTeX 模板
+# 武汉科技大学成人高等教育本科毕业论文 LaTeX 模板
 
-> 🎯 **专为心河Paper平台优化的 LaTeX 论文模板**
+> 由 Word2LaTeX Pipeline 自动生成
 
-## 📋 简介
+## 模板信息
 
-这是心河Paper官方推荐的学位论文 LaTeX 模板，符合国内高校学位论文的常见格式规范。
+- **学校**: 武汉科技大学
+- **类型**: 成人高等教育本科毕业论文
+- **源文件**: `examples/exp1.docx` (Word模板)
+- **生成时间**: 2026-04-06
 
-使用本模板编写的论文，在 [**心河Paper平台**](https://paper.huimengxinhe.com) 可获得最佳的在线预览支持。
-
----
-
-## 📁 文件结构规范
-
-使用本模板时，请确保包含以下**必需文件**：
-
-```
-xinhe-thesis/
-├── main.cls              # 文档类文件（模板核心，必需）
-├── main.tex              # 主文件（必需）
-├── references.bib        # 参考文献数据库（必需）
-├── main.pdf              # 编译后的PDF（用于预览模板效果）
-├── .latexmkrc            # latexmk 编译配置
-├── README.md             # 本文件
-├── chapters/             # 章节文件夹
-│   ├── abstract.tex      # 中英文摘要
-│   ├── chapter1.tex      # 第一章：绪论
-│   ├── chapter2.tex      # 第二章
-│   ├── conclusion.tex    # 结论与展望
-│   ├── appendix.tex      # 附录
-│   └── acknowledgement.tex # 致谢
-└── Fig/                  # 图片文件夹（统一存放所有图片素材）
-```
-
-### 重要规范
-
-| 项目 | 说明 |
-|------|------|
-| `main.cls` | 模板核心文件，**必须保留**，定义了论文格式 |
-| `main.tex` | 论文主文件，**必须保留**，填写论文基本信息 |
-| `references.bib` | 参考文献数据库，**必须保留** |
-| `main.pdf` | 可放入仓库用于展示模板效果预览 |
-| `Fig/` | **所有图片素材统一放在此目录**进行管理 |
-
----
-
-## 🚀 快速开始
-
-### 1. 安装 Tectonic
-
-本项目统一使用 [Tectonic](https://tectonic-typesetting.github.io/) 进行编译。
-
-```bash
-# 使用 cargo 安装
-cargo install tectonic
-
-# 或使用包管理器
-# macOS
-brew install tectonic
-
-# Windows (Scoop)
-scoop install tectonic
-```
-
-### 2. 安装字体
-
-模板使用以下字体：
-
-**中文字体：**
-- SimSun (宋体) - 正文
-- SimHei (黑体) - 标题
-
-**英文字体：**
-- Times New Roman - 英文正文
-- Arial - 英文无衬线
-- Courier New - 英文等宽
-
-### 3. 编译文档
-
-```bash
-# 使用 tectonic 编译（自动处理依赖）
-tectonic main.tex
-```
-
----
-
-## ✏️ 使用方法
-
-### 修改论文信息
-
-在 `main.tex` 中填写论文基本信息：
-
-```latex
-\title{你的论文题目}
-\author{你的姓名}
-\university{XX大学}
-\college{XX学院}
-\major{XX专业}
-\advisor{XXX教授}
-\studentid{20XXXXXXXX}
-```
-
-### 编写章节
-
-在 `chapters/` 目录下创建或编辑 `.tex` 文件：
-
-```latex
-\chapter{章节标题}
-\section{小节标题}
-这里是正文内容...
-```
-
-### 插入图片
-
-**所有图片请统一放入 `Fig/` 目录**，然后使用：
-
-```latex
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Fig/example}
-    \caption{图片标题}
-    \label{fig:example}
-\end{figure}
-```
-
-### 添加参考文献
-
-在 `references.bib` 中添加文献条目，然后在正文中引用：
-
-```latex
-\cite{key}  % 引用文献
-```
-
----
-
-## 📐 格式规范
+## 格式要求
 
 | 项目 | 设置 |
 |------|------|
-| 纸张 | A4 (210mm × 297mm) |
+| 页面大小 | A4 (210mm × 297mm) |
 | 页边距 | 上下左右 2.5cm |
-| 正文字体 | 宋体 小四 (12pt) |
+| 正文字体 | 宋体 (SimSun) 12pt |
+| 正文字号 | 小四 |
 | 行距 | 1.5倍 |
-| 章标题 | 黑体 小二 (18pt)，居中 |
-| 节标题 | 黑体 三号 (16pt) |
+| 一级标题 | 黑体 16pt 居中 |
+| 二级标题 | 黑体 14pt 左对齐 |
+| 三级标题 | 黑体 12pt 左对齐 |
 
----
+## 编译方法
 
-## 🛠️ 常用命令
+### 使用 Tectonic（推荐）
 
 ```bash
-# 编译
 tectonic main.tex
-
-# 清理辅助文件
-rm -f main.aux main.log main.out main.toc main.bbl main.blg
 ```
 
----
+### 使用 latexmk
 
-## 🌟 心河Paper平台支持
+```bash
+latexmk -xelatex main.tex
+```
 
-本模板已针对 [**心河Paper平台**](https://paper.huimengxinhe.com) 进行优化：
+## 字体依赖
 
-- ✅ 完美支持在线 LaTeX 预览
-- ✅ 符合心河Paper论文规范
-- ✅ 提供模板效果预览
+请确保系统已安装以下中文字体：
 
----
+- **SimSun** (宋体) - 正文
+- **SimHei** (黑体) - 标题
+- **KaiTi** (楷体) - 摘要
+- **FangSong** (仿宋) - 等宽/引用
 
-## 📚 依赖宏包
+### 字体安装
 
-模板已自动加载以下常用宏包：
-- `ctex` - 中文支持
-- `geometry` - 页面设置
-- `graphicx` - 图片插入
-- `amsmath` - 数学公式
-- `booktabs` - 专业表格
-- `hyperref` - 超链接
-- `natbib` - 参考文献
+```bash
+# 下载字体
+curl -o ~/.fonts/SIMSUN.TTC https://cos.huimengxinhe.com/font/SIMSUN.TTC
+curl -o ~/.fonts/SIMHEI.TTF https://cos.huimengxinhe.com/font/SIMHEI.TTF
+curl -o ~/.fonts/SIMKAI.TTF https://cos.huimengxinhe.com/font/SIMKAI.TTF
+curl -o ~/.fonts/SIMFANG.TTF https://cos.huimengxinhe.com/font/SIMFANG.TTF
 
----
+# 更新字体缓存
+fc-cache -fv ~/.fonts
+```
 
-## ⚠️ 注意事项
+## 文件结构
 
-1. **必须保留** `main.cls`、`main.tex`、`references.bib` 三个核心文件
-2. **图片统一存放**在 `Fig/` 目录下，便于管理
-3. 确保系统安装了所需的 Windows 中文字体
-4. 使用 XeLaTeX 编译以支持中文
-5. 修改章节后需要多次编译以更新交叉引用
-6. 添加新参考文献后需要运行 `bibtex`
+```
+.
+├── main.cls              # 文档类文件（模板核心）
+├── main.tex              # 主文件
+├── references.bib        # 参考文献数据库
+├── main.pdf              # 编译后的PDF
+├── chapters/             # 章节文件夹
+│   ├── chapter1.tex      # 第一章：绪论
+│   ├── chapter2.tex      # 第二章：相关理论
+│   ├── chapter3.tex      # 第三章：现状分析
+│   ├── chapter4.tex      # 第四章：问题分析
+│   ├── chapter5.tex      # 第五章：对策建议
+│   ├── conclusion.tex    # 结论
+│   ├── abstract.tex      # 摘要
+│   ├── acknowledgement.tex # 致谢
+│   └── appendix.tex      # 附录
+└── README.md             # 本文件
+```
 
----
+## 使用方法
 
-## 📖 参考资料
+### 1. 填写论文信息
 
-- 《LaTeX入门》刘海洋
-- [CTeX 论坛](https://ctex.org)
-- [LaTeX Project](https://www.latex-project.org)
+编辑 `main.tex` 中的论文基本信息：
 
----
+```latex
+\titlezh{你的论文题目}
+\authorname{你的姓名}
+\college{XXX学院}
+\major{你的专业}
+\studentid{你的学号}
+\advisor{指导教师姓名}
+\datestr{2025年X月}
+```
 
-## 📄 许可证
+### 2. 编写各章节内容
 
-本模板仅供学术交流使用，请根据所在学校的具体要求进行调整。
+在 `chapters/` 目录下的对应文件中编写各章节内容。
+
+### 3. 添加参考文献
+
+在 `references.bib` 中添加参考文献条目，在正文中使用 `\cite{key}` 引用。
+
+### 4. 编译生成 PDF
+
+```bash
+tectonic main.tex
+```
+
+## 主要功能
+
+### 封面
+
+自动生成符合学校要求的封面，包括：
+- 论文类型
+- 题目
+- 学院、专业、学号、姓名、指导教师、日期
+
+### 摘要
+
+支持中英文摘要，自动使用楷体排版中文摘要。
+
+### 目录
+
+自动生成目录，包含页码和超链接。
+
+### 页眉页脚
+
+- 页眉显示"武汉科技大学成人高等教育毕业论文"
+- 页脚显示页码
+
+### 标题样式
+
+- 一级标题：黑体，三号（16pt），居中
+- 二级标题：黑体，四号（14pt），左对齐
+- 三级标题：黑体，小四（12pt），左对齐
+
+### 参考文献
+
+支持 GB/T 7714-2015 格式的参考文献引用。
+
+### 致谢
+
+提供致谢环境，自动添加到目录。
+
+## 示例
+
+本模板包含一个完整的示例论文《天津通和饲料公司销售人员培训问题及对策研究》，涵盖：
+- 封面
+- 中英文摘要
+- 目录
+- 绪论
+- 相关理论
+- 现状分析
+- 问题分析
+- 对策建议
+- 结论
+- 参考文献
+- 致谢
+
+## 注意事项
+
+1. **字体**: 确保系统已安装所需中文字体，否则编译会失败
+2. **编译**: 使用 XeLaTeX 或 Tectonic 编译以支持中文
+3. **引用**: 修改章节后需要多次编译以更新交叉引用
+4. **参考文献**: 添加新参考文献后需要运行 BibTeX
+
+## 模板来源
+
+基于 [xinhe-thesis](https://github.com/XinhePaper/xinhe-thesis) 修改
+
+## 许可证
+
+MIT License

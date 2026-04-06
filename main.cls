@@ -1,324 +1,212 @@
 % ============================================================
-% 心河大学学位论文 LaTeX 文档类模板
+% 武汉科技大学成人高等教育本科毕业论文 LaTeX 模板
 % ============================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{main}[2026/03/11 v1.0 University Thesis Template]
+\ProvidesClass{main}[2026/04/06 v1.0 WUST Adult Education Thesis Template]
 
 % ------------------------------------------------------------
-% 选项处理
+% 基础文档类
 % ------------------------------------------------------------
-\DeclareOption{print}{\PassOptionsToClass{twoside}{ctexbook}}
-\DeclareOption{draft}{\PassOptionsToClass{draft}{ctexbook}}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-\ExecuteOptions{}
-\ProcessOptions\relax
+\LoadClass[12pt,a4paper]{article}
 
 % ------------------------------------------------------------
-% 基础文档类 (ctexbook 提供中文支持)
+% 必要宏包
 % ------------------------------------------------------------
-\LoadClass[UTF8,a4paper,12pt,openany]{ctexbook}
+\RequirePackage[UTF8,fontset=none]{ctex}
+\RequirePackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{booktabs}
+\RequirePackage{hyperref}
+\RequirePackage{tocloft}
+
+% ------------------------------------------------------------
+% 中文字体配置
+% ------------------------------------------------------------
+\setCJKmainfont{SimSun}[AutoFakeBold=true,AutoFakeSlant=true]      % 宋体 - 正文
+\setCJKsansfont{SimHei}[AutoFakeBold=true]                         % 黑体 - 标题
+\setCJKmonofont{FangSong}                                          % 仿宋
+
+\newCJKfontfamily\kaishu{KaiTi}                                     % 楷体 - 摘要
+\newCJKfontfamily\heiti{SimHei}                                     % 黑体命令
 
 % ------------------------------------------------------------
 % 页面设置
 % ------------------------------------------------------------
-\RequirePackage{geometry}
-\geometry{
-    paperwidth=210mm,
-    paperheight=297mm,
-    left=2.5cm,
-    right=2.5cm,
-    top=2.5cm,
-    bottom=2.5cm,
-    headheight=15pt,
-    headsep=20pt,
-    footskip=30pt
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small 武汉科技大学成人高等教育毕业论文}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% 目录页无页眉
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
 }
-
-% ------------------------------------------------------------
-% 基础宏包
-% ------------------------------------------------------------
-\RequirePackage{xeCJK}
-\RequirePackage{setspace}           % 行距设置
-\RequirePackage{fancyhdr}           % 页眉页脚
-\RequirePackage{titlesec}           % 标题格式
-\RequirePackage{tocloft}            % 目录格式
-\RequirePackage{graphicx}           % 图片支持
-\RequirePackage{amsmath,amssymb,amsfonts} % 数学公式
-\RequirePackage{booktabs}           % 表格
-\RequirePackage{longtable}          % 跨页表格
-\RequirePackage{multirow}           % 表格多行合并
-\RequirePackage{array}              % 表格增强
-\RequirePackage{float}              % 浮动体控制
-\RequirePackage{caption}            % 图表标题
-\RequirePackage{subcaption}         % 子图标题
-\RequirePackage{bicaption}           % 双语图表标题
-\RequirePackage{hyperref}           % 超链接
-\RequirePackage{enumitem}           % 列表环境
-\RequirePackage{xcolor}             % 颜色
-\RequirePackage{listings}           % 代码 listings
-\RequirePackage{algorithm}          % 算法环境
-\RequirePackage{algpseudocode}      % 算法伪代码
-\RequirePackage{dirtree}            % 目录树结构
-
-% ------------------------------------------------------------
-% 参考文献设置
-% ------------------------------------------------------------
-\RequirePackage[sort&compress,numbers,super]{natbib}
-
-% ------------------------------------------------------------
-% 超链接设置
-% ------------------------------------------------------------
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    citecolor=black,
-    urlcolor=blue,
-    bookmarksopen=true,
-    bookmarksnumbered=true,
-    pdfborder={0 0 0}
-}
-
-% ------------------------------------------------------------
-% 字体设置
-% ------------------------------------------------------------
-% 中文字体：宋体(正文)、黑体(标题)
-\setCJKmainfont{SimSun}[AutoFakeBold=true,AutoFakeSlant=true]     % 宋体 - 正文
-\setCJKsansfont{SimHei}[AutoFakeBold=true]                         % 黑体 - 标题
-\setCJKmonofont{SimSun}                                             % 宋体 - 等宽备选
-
-% 英文字体：Times New Roman
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
-
-\setmainfont{Times New Roman}   % 英文正文
-\setsansfont{Arial}             % 英文无衬线
-\setmonofont{Courier New}       % 英文等宽
-
-% ------------------------------------------------------------
-% 字号设置 (pt)
-% ------------------------------------------------------------
-\newcommand{\chuhao}{\fontsize{42pt}{50.4pt}\selectfont}      % 初号
-\newcommand{\xiaochu}{\fontsize{36pt}{43.2pt}\selectfont}    % 小初
-\newcommand{\yihao}{\fontsize{26pt}{31.2pt}\selectfont}      % 一号
-\newcommand{\xiaoyi}{\fontsize{24pt}{28.8pt}\selectfont}     % 小一
-\newcommand{\erhao}{\fontsize{22pt}{26.4pt}\selectfont}      % 二号
-\newcommand{\xiaoer}{\fontsize{18pt}{21.6pt}\selectfont}     % 小二
-\newcommand{\sanhao}{\fontsize{16pt}{19.2pt}\selectfont}     % 三号
-\newcommand{\xiaosan}{\fontsize{15pt}{18pt}\selectfont}      % 小三
-\newcommand{\sihao}{\fontsize{14pt}{16.8pt}\selectfont}      % 四号
-\newcommand{\xiaosi}{\fontsize{12pt}{14.4pt}\selectfont}     % 小四
-\newcommand{\wuhao}{\fontsize{10.5pt}{12.6pt}\selectfont}    % 五号
-\newcommand{\xiaowu}{\fontsize{9pt}{10.8pt}\selectfont}      % 小五
 
 % ------------------------------------------------------------
 % 行距设置
 % ------------------------------------------------------------
-\setstretch{1.5}    % 1.5倍行距
+\onehalfspacing  % 1.5倍行距
 
 % ------------------------------------------------------------
-% 章节标题格式设置
+% 标题格式设置
 % ------------------------------------------------------------
-\ctexset{
-    chapter = {
-        format = \centering\sffamily\xiaoer\bfseries,
-        name = {第,章},
-        number = \chinese{chapter},
-        beforeskip = 24pt,
-        afterskip = 18pt,
-        pagestyle = fancy
-    },
-    section = {
-        format = \sffamily\sanhao\bfseries,
-        beforeskip = 12pt,
-        afterskip = 6pt
-    },
-    subsection = {
-        format = \sffamily\sihao\bfseries,
-        beforeskip = 6pt,
-        afterskip = 6pt
-    },
-    subsubsection = {
-        format = \sffamily\xiaosi\bfseries,
-        beforeskip = 6pt,
-        afterskip = 6pt
-    }
-}
+
+% 一级标题：黑体，三号（16pt），居中
+\titleformat{\section}
+    {\centering\heiti\fontsize{16pt}{24pt}\selectfont\bfseries}
+    {\thesection}{1em}{}
+
+% 二级标题：黑体，四号（14pt），左对齐
+\titleformat{\subsection}
+    {\heiti\fontsize{14pt}{21pt}\selectfont\bfseries}
+    {\thesubsection}{1em}{}
+
+% 三级标题：黑体，小四（12pt），左对齐
+\titleformat{\subsubsection}
+    {\heiti\fontsize{12pt}{18pt}\selectfont\bfseries}
+    {\thesubsubsection}{1em}{}
+
+% 标题间距
+\titlespacing*{\section}{0pt}{18pt}{12pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
 
 % ------------------------------------------------------------
 % 目录格式设置
 % ------------------------------------------------------------
-\renewcommand{\cftchapfont}{\sffamily\xiaosi}
-\renewcommand{\cftsecfont}{\xiaosi}
-\renewcommand{\cftsubsecfont}{\xiaosi}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-\setlength{\cftbeforechapskip}{6pt}
-\setlength{\cftbeforesecskip}{3pt}
-\setlength{\cftbeforesubsecskip}{3pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\heiti}
+\renewcommand{\cftsecpagefont}{\normalfont}
 
 % ------------------------------------------------------------
-% 页眉页脚设置
+% 段落设置
 % ------------------------------------------------------------
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{\xiaowu 心河大学学位论文}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% 章节首页页眉页脚
-\fancypagestyle{plain}{
-    \fancyhf{}
-    \fancyhead[C]{\xiaowu 心河大学学位论文}
-    \fancyfoot[C]{\thepage}
-    \renewcommand{\headrulewidth}{0.4pt}
-}
+\setlength{\parindent}{2em}      % 首行缩进2字符
+\setlength{\parskip}{0pt}        % 段落间距
 
 % ------------------------------------------------------------
-% 图表标题格式
+% 图表标题设置
 % ------------------------------------------------------------
-\captionsetup{
-    font={small},
-    labelfont={bf},
-    labelsep=quad,
-    skip=10pt
-}
-\captionsetup[figure]{name={图}}
-\captionsetup[table]{name={表}}
-
-% ------------------------------------------------------------
-% 双语图表标题设置
-% ------------------------------------------------------------
-\DeclareCaptionOption{bi-first}[]{%
-    \def\figurename{图}%
-    \def\tablename{表}%
-}
-\DeclareCaptionOption{bi-second}[]{%
-    \def\figurename{Figure}%
-    \def\tablename{Table}%
-}
-\captionsetup[bi-first]{bi-first}
-\captionsetup[bi-second]{bi-second}
-
-% ------------------------------------------------------------
-% 图表编号格式: 章-序号
-% ------------------------------------------------------------
-\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
-\renewcommand{\thetable}{\thechapter-\arabic{table}}
-\renewcommand{\theequation}{\thechapter-\arabic{equation}}
-\makeatletter
-\@addtoreset{figure}{chapter}
-\@addtoreset{table}{chapter}
-\@addtoreset{equation}{chapter}
-\makeatother
+\RequirePackage{caption}
+\captionsetup{font=small,labelsep=space}
 
 % ------------------------------------------------------------
 % 列表环境设置
 % ------------------------------------------------------------
-\setlist[enumerate]{
-    label=(\arabic*),
-    leftmargin=2em,
-    itemsep=0pt,
-    parsep=0pt
-}
-\setlist[itemize]{
-    leftmargin=2em,
-    itemsep=0pt,
-    parsep=0pt
-}
+\RequirePackage{enumitem}
+\setlist{nosep,leftmargin=2em}
 
-% ------------------------------------------------------------
-% 代码环境设置
-% ------------------------------------------------------------
-\lstset{
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{gray},
-    stringstyle=\color{red},
-    numbers=left,
-    numberstyle=\tiny,
-    numbersep=8pt,
-    frame=single,
-    breaklines=true,
-    showstringspaces=false,
-    tabsize=4,
-    captionpos=b
-}
+% ============================================================
+% 封面信息命令定义
+% ============================================================
+\newcommand{\@titlezh}{}
+\newcommand{\@authorname}{}
+\newcommand{\@college}{}
+\newcommand{\@major}{}
+\newcommand{\@studentid}{}
+\newcommand{\@advisor}{}
+\newcommand{\@datestr}{}
 
-% ------------------------------------------------------------
-% 数学定理环境
-% ------------------------------------------------------------
-\RequirePackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{lemma}{引理}[chapter]
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{remark}{注}[chapter]
+\newcommand{\titlezh}[1]{\renewcommand{\@titlezh}{#1}}
+\newcommand{\authorname}[1]{\renewcommand{\@authorname}{#1}}
+\newcommand{\college}[1]{\renewcommand{\@college}{#1}}
+\newcommand{\major}[1]{\renewcommand{\@major}{#1}}
+\newcommand{\studentid}[1]{\renewcommand{\@studentid}{#1}}
+\newcommand{\advisor}[1]{\renewcommand{\@advisor}{#1}}
+\newcommand{\datestr}[1]{\renewcommand{\@datestr}{#1}}
 
-% ------------------------------------------------------------
-% 封面信息命令
-% ------------------------------------------------------------
-\newcommand{\university}[1]{\gdef\@university{#1}}
-\newcommand{\college}[1]{\gdef\@college{#1}}
-\newcommand{\major}[1]{\gdef\@major{#1}}
-\newcommand{\advisor}[1]{\gdef\@advisor{#1}}
-\newcommand{\studentid}[1]{\gdef\@studentid{#1}}
-\newcommand{\degree}[1]{\gdef\@degree{#1}}
-\newcommand{\submitdate}[1]{\gdef\@submitdate{#1}}
-
-\university{XX大学}
-\college{XX学院}
-\major{XX专业}
-\advisor{XXX教授}
-\studentid{20XXXXXXXX}
-\degree{硕士学位论文}
-\submitdate{2026年3月}
-
-% ------------------------------------------------------------
+% ============================================================
 % 封面生成命令
-% ------------------------------------------------------------
+% ============================================================
 \newcommand{\makecover}{%
     \begin{titlepage}
-        \centering
-        \vspace*{1cm}
-        
-        % 学校名称
-        {\zihao{-2}\bfseries\CJKfamily{zhsong}\@university}
-        
-        \vspace{1.5cm}
-        
-        % 学位类型
-        {\zihao{2}\bfseries\CJKfamily{zhsong}\@degree}
-        
-        \vspace{3cm}
-        
-        % 论文题目
-        {\zihao{-2}\bfseries\CJKfamily{zhsong}\@title}
-        
-        \vspace{4cm}
-        
-        % 作者信息
-        {\zihao{4}
-        \begin{tabular}{rl}
-            \CJKfamily{zhsong}\textbf{学院名称：} & \CJKfamily{zhsong}\@college \\[0.8cm]
-            \CJKfamily{zhsong}\textbf{专业名称：} & \CJKfamily{zhsong}\@major \\[0.8cm]
-            \CJKfamily{zhsong}\textbf{作者姓名：} & \CJKfamily{zhsong}\@author \\[0.8cm]
-            \CJKfamily{zhsong}\textbf{学\qquad 号：} & \CJKfamily{zhsong}\@studentid \\[0.8cm]
-            \CJKfamily{zhsong}\textbf{指导教师：} & \CJKfamily{zhsong}\@advisor \\[0.8cm]
-        \end{tabular}
-        }
-        
-        \vfill
-        
-        % 提交日期
-        {\zihao{4}\bfseries\CJKfamily{zhsong}\@submitdate}
-        
+        \begin{center}
+            \vspace*{1cm}
+            
+            {\heiti\fontsize{22pt}{33pt}\selectfont 成人高等教育本科毕业论文}
+            
+            \vspace{2cm}
+            
+            {\heiti\fontsize{18pt}{27pt}\selectfont 题目：\@titlezh}
+            
+            \vspace{3cm}
+            
+            \begin{tabular}{rl}
+                \heiti\fontsize{14pt}{28pt}\selectfont 学\quad 院: & 
+                \fontsize{14pt}{28pt}\selectfont \@college \\[0.5em]
+                \heiti\fontsize{14pt}{28pt}\selectfont 专\quad 业: & 
+                \fontsize{14pt}{28pt}\selectfont \@major \\[0.5em]
+                \heiti\fontsize{14pt}{28pt}\selectfont 学\quad 号: & 
+                \fontsize{14pt}{28pt}\selectfont \@studentid \\[0.5em]
+                \heiti\fontsize{14pt}{28pt}\selectfont 学生姓名: & 
+                \fontsize{14pt}{28pt}\selectfont \@authorname \\[0.5em]
+                \heiti\fontsize{14pt}{28pt}\selectfont 指导教师: & 
+                \fontsize{14pt}{28pt}\selectfont \@advisor \\[0.5em]
+                \heiti\fontsize{14pt}{28pt}\selectfont 日\quad 期: & 
+                \fontsize{14pt}{28pt}\selectfont \@datestr \\[0.5em]
+            \end{tabular}
+            
+            \vfill
+        \end{center}
     \end{titlepage}
 }
 
 % ============================================================
-% 文档类结束
+% 摘要环境定义
 % ============================================================
+\newenvironment{abstractzh}{%
+    \clearpage
+    \begin{center}
+        {\heiti\fontsize{16pt}{24pt}\selectfont 摘\quad 要}
+    \end{center}
+    \vspace{1em}
+    \kaishu
+}{%
+    \normalfont
+}
+
+\newenvironment{abstracten}{%
+    \clearpage
+    \begin{center}
+        {\bfseries\fontsize{16pt}{24pt}\selectfont Abstract}
+    \end{center}
+    \vspace{1em}
+}{%
+}
+
+% 关键词命令
+\newcommand{\keywordszh}[1]{%
+    \vspace{1em}
+    \noindent\textbf{关键词：}#1
+}
+
+\newcommand{\keywordsen}[1]{%
+    \vspace{1em}
+    \noindent\textbf{Keywords: }#1
+}
+
+% ============================================================
+% 致谢环境
+% ============================================================
+\newenvironment{acknowledgement}{%
+    \clearpage
+    \section*{致\quad 谢}
+    \addcontentsline{toc}{section}{致谢}
+}{%
+}
+
+% ============================================================
+% 参考文献设置
+% ============================================================
+\RequirePackage[sort&compress,super,square]{natbib}
+\bibliographystyle{gbt7714-numerical}
+
+% 文献引用上标
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}

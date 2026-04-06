@@ -1,98 +1,36 @@
-% ============================================================
-% 第二章 LaTeX基础示例
-% ============================================================
+\section{相关理论}
 
-\chapter{LaTeX基础示例}
+\subsection{培训内涵}
 
-\section{图片插入示例}
+培训是指企业为了使员工获得或改进与工作有关的知识、技能、动机、态度和行为，从而有利于提高员工的绩效以及员工对企业目标的贡献，企业所作的有计划的、有系统的各种努力。
 
-图~\ref{fig:neural-network}展示了一个深度神经网络结构示例。图~\ref{fig:subfig-example}展示了子图排版功能。
+从广义上讲，培训是人力资源开发的重要组成部分，是企业人力资本投资的重要形式。从狭义上讲，培训是针对特定岗位或特定技能的有目的的教育活动。
 
-% 单图示例
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figture/example}
-    \bicaption{深度神经网络结构示意图}{Schematic Diagram of Deep Neural Network Structure}
-    \label{fig:neural-network}
-\end{figure}
+\subsection{成人学习理论}
 
-% 子图示例
-\begin{figure}[htbp]
-    \centering
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{figture/example}
-        \bicaption{子图A说明}{Subfigure A Description}
-        \label{fig:sub-a}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{figture/example}
-        \bicaption{子图B说明}{Subfigure B Description}
-        \label{fig:sub-b}
-    \end{subfigure}
-    \bicaption{子图排版示例}{Example of Subfigure Layout}
-    \label{fig:subfig-example}
-\end{figure}
+成人学习理论是研究成人学习特点和规律的理论。诺尔斯（Knowles）提出了成人学习的五个假设：
 
-\section{公式排版示例}
+\begin{enumerate}
+    \item 成人具有自我导向的心理需求。成人学习者希望在学习过程中能够自主决定学习的内容、方式和时间。
+    \item 成人的经验是学习的丰富资源。成人积累了丰富的生活和工作经验，这些经验可以作为学习的基础和新知识的连接点。
+    \item 成人的学习准备度与角色发展任务相关。当成人面临新的角色或工作任务时，学习动机最强。
+    \item 成人倾向于立即应用学习成果。成人学习者希望学到的知识能够立即应用到工作中，解决实际问题。
+    \item 成人的学习动机主要来自内在因素。成人学习的主要动力来源于自我实现、个人成长等内在需求。
+\end{enumerate}
 
-行内公式示例：$E = mc^2$，$\alpha + \beta = \gamma$。
+\subsection{人力资本理论}
 
-独立编号公式示例：
-\begin{equation}
-    \int_{a}^{b} f(x) \, dx = F(b) - F(a)
-    \label{eq:integral}
-\end{equation}
+人力资本理论认为，人力资本是体现在劳动者身上的一种资本类型，它以劳动者的数量和质量（即知识、技能、健康等）表示，是经济增长和发展的重要因素。
 
-多行对齐公式示例：
-\begin{align}
-    \nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \label{eq:maxwell1} \\
-    \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:maxwell2}
-\end{align}
+该理论的主要观点包括：人力资本是通过投资形成的；人力资本投资收益率高于物质资本投资；教育、培训、健康等是形成人力资本的主要途径。
 
-公式~\eqref{eq:integral}展示了微积分基本定理，公式~\eqref{eq:maxwell1}和\eqref{eq:maxwell2}是麦克斯韦方程组的一部分。
+\subsection{柯氏四级培训评估理论}
 
-\section{表格排版示例}
+柯克帕特里克（Kirkpatrick）提出的四级培训评估模型是培训评估领域最经典、应用最广泛的理论框架，包括：
 
-表~\ref{tab:three-line}展示了标准三线表的排版效果。
-
-% 三线表示例
-\begin{table}[htbp]
-    \centering
-    \bicaption{实验结果对比表}{Comparison of Experimental Results}
-    \label{tab:three-line}
-    \begin{tabular}{ccc}
-        \toprule
-        \textbf{方法} & \textbf{准确率(\%)} & \textbf{运行时间(s)} \\
-        \midrule
-        方法A & 92.5 & 1.23 \\
-        方法B & 94.8 & 1.56 \\
-        方法C & 96.2 & 2.01 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-表~\ref{tab:multi-row}展示了包含多行合并的表格。
-
-\begin{table}[htbp]
-    \centering
-    \bicaption{多层结构数据表}{Multi-level Structure Data Table}
-    \label{tab:multi-row}
-    \begin{tabular}{cccc}
-        \toprule
-        \textbf{类别} & \textbf{参数} & \textbf{数值} & \textbf{单位} \\
-        \midrule
-        \multirow{2}{*}{输入} & 通道数 & 3 & - \\
-                              & 尺寸 & 224$\times$224 & px \\
-        \midrule
-        \multirow{2}{*}{输出} & 类别数 & 1000 & - \\
-                              & 概率 & 0.85 & - \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\section{本章小结}
-
-本章展示了LaTeX模板的核心功能：图片插入（含子图）、数学公式排版（行内公式、独立公式、多行对齐公式）、三线表排版，以及中英双语图表标题功能。
+\begin{enumerate}
+    \item 反应层（Reaction）：评估学员对培训的满意度，通常在培训结束时通过问卷调查进行。
+    \item 学习层（Learning）：评估学员在知识、技能、态度方面的收获，通过测试、考核等方式进行。
+    \item 行为层（Behavior）：评估学员在工作中的行为改变，通过上级评价、同事评价、自我评价等方式进行。
+    \item 结果层（Results）：评估培训对组织绩效的影响，通过销售额、客户满意度、生产效率等指标进行。
+\end{enumerate}
