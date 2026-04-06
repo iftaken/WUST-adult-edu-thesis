@@ -20,6 +20,7 @@ COMPILE_CMD: tectonic -X compile main.tex
 
 ### 1. 初始化检查（首次启动）
 读取 `main.tex` 和 `${BIB_FILE}`，了解论文结构，使用 `SetTodoList` 创建任务清单。
+缺少相关字体的时候看 `init.sh`
 
 ### 2. 写作与修改
 - 保持LaTeX语义化标记，使用标准文档类（ctexart/ctexrep/IEEEtran等）

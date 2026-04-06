@@ -19,8 +19,9 @@
 \makecover
 
 % ------------------------------------------------------------
-% 中文摘要
+% 中文摘要（使用大写罗马数字页码）
 % ------------------------------------------------------------
+\pagenumbering{Roman}
 \begin{abstractzh}
 在社会前行与时代加速变迁的大背景下，对销售人员进行培训已成为现代企业中的关键环节。这不仅能够增强员工的专业技能和个人素养，还能够推动企业的全面发展。鉴于日益激烈的竞争环境和不断进步的技术，企业必须持续更新，以保证员工掌握必需的技巧和信息。
 
@@ -44,14 +45,14 @@ This paper will be divided into six parts, first, the introduction; second, the 
 % 目录
 % ------------------------------------------------------------
 \clearpage
-\tableofcontents
 \thispagestyle{plain}
+\tableofcontents
 
 % ------------------------------------------------------------
-% 正文开始
+% 正文开始（切换为阿拉伯数字页码）
 % ------------------------------------------------------------
 \clearpage
-\setcounter{page}{1}
+\pagenumbering{arabic}
 
 \input{chapters/chapter1}
 \input{chapters/chapter2}
